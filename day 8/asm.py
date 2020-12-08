@@ -1,28 +1,26 @@
 def read(command):
-    global i,n, cl
+    global acc,p, cl
     if command[0] == "nop":
-        i+=0
-        n+=1
+        p+=1
     if command[0] == "jmp":
-        i+=1 
-        n+=int(command[1])
+        p+=int(command[1])
     if command[0] == "acc":
-        i+=int(command[1])
-        n+=1
-
-    return n,i
+        acc+=int(command[1])
+        p+=1
 
 f = open("input.txt", "r")
 l = [n.split() for n in f.readlines()]
-cl = []
-i=0 #accumulator
-n=0 #program counter
-while True :
-    print(l[n])
-    if n not in cl:
-        cl.append(n)
-    else:
-        print(cl)
-        break
-    print(read(l[n]))
 
+cl = []
+
+acc=0 #accumulator
+p=0 #program counter
+
+while True :
+    # print(p,":",l[p], "acc:",acc) #here is for debug
+    if p not in cl:
+       cl.append(p)
+    else:
+        print("program counter",p,"command:",l[p], "acc:",acc)
+        break
+    read(l[p])
