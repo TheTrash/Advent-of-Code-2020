@@ -1,0 +1,1 @@
+l = [int(n) for n in open("input.txt", "r").readlines()]
