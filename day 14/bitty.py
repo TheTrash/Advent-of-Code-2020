@@ -9,17 +9,11 @@ for line in f.readlines():
     else:
         tmp = line.split()
         m_id = int(tmp[0].replace("mem[",'').replace("]",''))
-        bit = f'{int(tmp[2]):036b}'
-        print(bit)
-        bit = list(bit)
+        bit = list(f'{int(tmp[2]):036b}')
         for i, b in enumerate(mask):
             if(b != 'X'):
                 bit[i] = b
-        print()
         memory[m_id] = int(''.join(bit),2)
-
-print(memory)
-
 
 values = memory.values()
 print(sum(values))
